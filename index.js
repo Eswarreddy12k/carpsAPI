@@ -70,6 +70,21 @@ app.get('/showdb',(req,res)=>{
         res.send(suc)
     })
 })
+app.post('/updatedb/:id/:status',(req,res)=>{
+    const updateddb={
+        slot_id:req.params.id,
+        status:req.params.status
+    }
+    CPS.findOneAndUpdate({slot_id:req.params.id},updateddb,(err,suc)=>{
+        if(err){
+            console.log("unable to upadte db")
+        }
+        else{
+            console.log("updated the db")
+        }
+    })
+    res.send("success")
+})
 
 app.get('/updatedb/:id/:status',(req,res)=>{
     console.log(req.params.id)
