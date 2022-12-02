@@ -35,6 +35,36 @@ app.get('/',(req,res)=>{
     res.send("API CarPS running")
 })
 
+
+const request = require('request');
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
+app.get('/abcd', (req, res) => {
+  request(
+    { url: 'https://carpsapi-production.up.railway.app/showdb' },
+    (error, response, body) => {
+      if (error || response.statusCode !== 200) {
+        return res.status(500).json({ type: 'error', message: err.message });
+      }
+
+      res.json(JSON.parse(body));
+    }
+  )
+});
+
+
+
+
+
+
+
+
+
+
 app.get('/showdb',(req,res)=>{
     CPS.find({},(err,suc)=>{
         res.send(suc)

@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "^4.18.2",
     "mongoose": "^6.7.5",
-    "nodeenv": "^3.0.75"
+    "nodeenv": "^3.0.75",
+    "request": "^2.88.2"
   }
 }
